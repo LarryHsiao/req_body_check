@@ -14,7 +14,7 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) {
         try {
-            final File rootDir = new File("~/cmoney_forum");
+            final File rootDir = new File("/home/larryhsiao/cmoney_forum");
            new TextFile(
                 new File(rootDir, "temp.json"),
                 // language=JSON
