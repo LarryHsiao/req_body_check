@@ -5,6 +5,7 @@ import org.takes.facets.fork.FkRegex;
 import org.takes.facets.fork.TkFork;
 import org.takes.http.Exit;
 import org.takes.http.FtBasic;
+import org.takes.http.FtCli;
 
 import java.io.File;
 
@@ -33,7 +34,7 @@ public class Main {
                     "  ]\n" +
                     "}"
            ).value();
-            new FtBasic(
+            new FtCli(
                 new TkFork(
                     new FkRegex(
                         //Language=RegExp
@@ -41,7 +42,7 @@ public class Main {
                         new TkBodyChecking(rootDir)
                     )
                 ),
-                9988
+                args
             ).start(Exit.NEVER);
         } catch (Exception e) {
             e.printStackTrace();
