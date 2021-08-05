@@ -1,5 +1,6 @@
 package com.larryhsiao.req_body_check;
 
+import com.larryhsiao.clotho.file.TextFile;
 import org.takes.facets.fork.FkMethods;
 import org.takes.facets.fork.FkRegex;
 import org.takes.facets.fork.TkFork;
@@ -17,6 +18,13 @@ public class Main {
     public static void main(String[] args) {
         try {
             final File rootDir = Files.createTempDirectory("temp").toFile();
+            new TextFile(
+                new File(rootDir, "temp.json"),
+                // language=JSON
+                "{\n" +
+                    "  \"abc\": 100\n" +
+                    "}"
+            ).value();
             new FtBasic(
                 new TkFork(
                     new FkRegex(

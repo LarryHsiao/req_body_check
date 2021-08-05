@@ -24,7 +24,10 @@ public class TkBodyChecking implements TkRegex {
             Json.createReader(req.body()).readObject(),
             Json.createReader(
                 new FileInputStream(
-                    req.matcher().group("path")
+                    new File(
+                        root,
+                        req.matcher().group("path")
+                    )
                 )
             ).readObject()
         );

@@ -8,10 +8,11 @@ version '0.1.0'
 mainClassName = 'com.larryhsiao.req_body_check.Main'
 
 repositories {
-    mavenCentral()
+    maven { url = "https://larryhsiao.com:11000/repository/maven-public/" }
 }
 
 dependencies {
+    implementation 'com.larryhsiao:clotho:1.18.13'
     implementation 'org.takes:takes:1.19'
     implementation 'javax.json:javax.json-api:1.1.4'
     implementation 'org.glassfish:javax.json:1.1.4'
