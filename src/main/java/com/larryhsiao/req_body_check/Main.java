@@ -1,15 +1,12 @@
 package com.larryhsiao.req_body_check;
 
 import com.larryhsiao.clotho.file.TextFile;
-import org.takes.facets.fork.FkMethods;
 import org.takes.facets.fork.FkRegex;
 import org.takes.facets.fork.TkFork;
-import org.takes.facets.fork.TkMethods;
 import org.takes.http.Exit;
 import org.takes.http.FtBasic;
 
 import java.io.File;
-import java.nio.file.Files;
 
 /**
  * Entry point of req_body_check
@@ -17,14 +14,25 @@ import java.nio.file.Files;
 public class Main {
     public static void main(String[] args) {
         try {
-            final File rootDir = Files.createTempDirectory("temp").toFile();
-            new TextFile(
+            final File rootDir = new File("~/cmoney_forum");
+           new TextFile(
                 new File(rootDir, "temp.json"),
                 // language=JSON
                 "{\n" +
-                    "  \"abc\": 100\n" +
+                    "  \"integer\": 100,\n" +
+                    "  \"string\": \"string\",\n" +
+                    "  \"boolean\": false,\n" +
+                    "  \"string_array\": [\n" +
+                    "    \"st\"\n" +
+                    "  ],\n" +
+                    "  \"object_array\": [\n" +
+                    "    {\n" +
+                    "      \"string\": \"string\",\n" +
+                    "      \"boolean\": false\n" +
+                    "    }\n" +
+                    "  ]\n" +
                     "}"
-            ).value();
+           ).value();
             new FtBasic(
                 new TkFork(
                     new FkRegex(
@@ -33,7 +41,7 @@ public class Main {
                         new TkBodyChecking(rootDir)
                     )
                 ),
-                8080
+                9988
             ).start(Exit.NEVER);
         } catch (Exception e) {
             e.printStackTrace();
